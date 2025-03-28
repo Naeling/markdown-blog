@@ -1,4 +1,11 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models, Document, Model } from "mongoose";
+
+export interface PostType extends Document {
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 const PostSchema = new Schema(
   {
@@ -10,4 +17,4 @@ const PostSchema = new Schema(
   }
 );
 
-export const Post = models.Post || model("Post", PostSchema);
+export const Post: Model<PostType> = models.Post || model("Post", PostSchema);
