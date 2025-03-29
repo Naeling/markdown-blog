@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning className={inter.className}>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <>
+            <ThemeToggle />
+            {children}
+          </>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

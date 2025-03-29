@@ -1,9 +1,10 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "selector",
   theme: {
     extend: {},
   },
+  content: ["./src/**/*.{ts,tsx}"],
   variants: {
     extend: {},
   },
