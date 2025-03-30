@@ -9,7 +9,7 @@ if (!MONGODB_URI) {
 const cached = global.mongooseConnection || { conn: null, promise: null };
 
 async function connectToDatabase() {
-  if (cached.conn) return cached.conn;
+  if (cached.conn) return;
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
@@ -20,8 +20,6 @@ async function connectToDatabase() {
   cached.conn = await cached.promise;
 
   global.mongooseConnection = cached;
-
-  return cached.conn;
 }
 
 export default connectToDatabase;
