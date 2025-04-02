@@ -12,6 +12,9 @@ jobs:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
 
+      - name: 💾 Install pnpm
+        run: npm install -g pnpm
+
       - name: 🔢 Read Node.js version from .nvmrc
         id: node
         run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
