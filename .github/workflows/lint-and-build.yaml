@@ -36,3 +36,5 @@ jobs:
 
       - name: 🔧 Build project
         run: pnpm run build
+        env:
+          MONGODB_URI: ${{ vars.MONGODB_URI }}
