@@ -1,0 +1,35 @@
+name: lint-and-build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔢 Read Node.js version from .nvmrc
+        id: node
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.node.outputs.version }}
+          cache: "pnpm"
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🧹 Run Prettier check
+        run: pnpm run prettier-check
+
+      - name: 🧪 Run Linter
+        run: pnpm run lint
+
+      - name: 🔧 Build project
+        run: pnpm run build
