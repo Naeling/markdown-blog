@@ -16,5 +16,3 @@ export const createPostSchema = postSchema.omit({
 
 export type PostDTO = z.infer<typeof postSchema>;
 export type CreatePostInput = z.infer<typeof createPostSchema>;
-
-console.log("Hello world");
