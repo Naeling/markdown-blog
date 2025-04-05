@@ -12,9 +12,8 @@ async function connectToDatabase() {
   if (cached.conn) return;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      bufferCommands: false,
-    });
+    console.log("Starting to connect to database");
+    cached.promise = mongoose.connect(MONGODB_URI);
   }
 
   cached.conn = await cached.promise;
