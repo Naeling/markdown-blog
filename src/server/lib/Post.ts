@@ -14,7 +14,6 @@ export async function getAllPosts() {
       updatedAt: post.updatedAt,
     });
     if (!parsedPost.success) {
-      // eslint-disable-next-line no-console
       console.log(`Found invalid post ${post}`);
       return null;
     }
