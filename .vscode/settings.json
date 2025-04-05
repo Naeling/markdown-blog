@@ -3,7 +3,4 @@
     "*.css": "tailwindcss"
   },
   "eslint.useFlatConfig": true,
-  "eslint.options": {
-    "ignorePattern": ["*.mongodb.js"]
-  }
 }
