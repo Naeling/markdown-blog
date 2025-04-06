@@ -22,3 +22,14 @@ export async function getAllPosts() {
 
   return compact(posts);
 }
+
+export async function createPost({
+  title,
+  content,
+}: {
+  title: string;
+  content: string;
+}) {
+  const post = new Post({ title, content });
+  return post.save();
+}
