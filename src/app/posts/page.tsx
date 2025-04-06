@@ -1,5 +1,5 @@
-import { getAllPosts } from "@/server/lib/Post";
-import { PostCard } from "@/components/posts/PostCard";
+import { getAllPosts } from "@/modules/posts/lib/Post";
+import { PostCard } from "@/modules/posts/components/PostCard";
 
 export default async function Posts() {
   const posts = await getAllPosts();

@@ -1,7 +1,7 @@
 import compact from "lodash/compact";
 
-import { Post } from "@/server/models";
-import { PostDTO, postSchema } from "@/lib/validation/post";
+import { Post } from "@/models";
+import { PostDTO, postSchema } from "@/modules/posts/validation/post";
 
 export async function getAllPosts() {
   const rawPosts = await Post.find().sort({ createdAt: -1 });
