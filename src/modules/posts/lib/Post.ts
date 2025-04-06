@@ -1,3 +1,5 @@
+"use server";
+
 import compact from "lodash/compact";
 
 import { Post } from "@/models";
