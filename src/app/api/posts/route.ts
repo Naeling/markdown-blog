@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Post } from "@/server/models";
+import { Post } from "@/models";
 
 export async function GET() {
   const posts = await Post.find().sort({ createdAt: -1 });

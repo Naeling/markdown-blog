@@ -9,12 +9,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui";
+import { Input } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { createPostAction } from "@/app/posts/new/createPostAction";
 
-export const createPostSchema = z.object({
+const createPostSchema = z.object({
   title: z.string().min(1),
   content: z.string().min(1),
 });
