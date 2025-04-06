@@ -1,7 +1,7 @@
 "use server";
 
-import { createPostSchema } from "@/modules/posts/validation/post";
-import { createPost } from "@/modules/posts/lib/Post";
+import { createPostSchema } from "@/modules/posts";
+import { createPost } from "@/modules/posts";
 import { formDataToObject } from "@/utils";
 
 export async function createPostAction(formData: FormData) {
