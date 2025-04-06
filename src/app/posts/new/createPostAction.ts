@@ -2,7 +2,7 @@
 
 import { createPostSchema } from "@/modules/posts/validation/post";
 import { createPost } from "@/modules/posts/lib/Post";
-import formDataToObject from "@/utils/formDataToObject";
+import { formDataToObject } from "@/utils";
 
 export async function createPostAction(formData: FormData) {
   const createPostData = createPostSchema.parse(formDataToObject(formData));
