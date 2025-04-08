@@ -4,4 +4,3 @@ export * from "./form";
 export * from "./input";
 export * from "./label";
 export * from "./switch";
-export * from "./theme-toggle";
