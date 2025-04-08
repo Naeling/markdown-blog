@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { ThemeToggle } from "@/components/ui";
+import { Header } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +25,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <>
-            <ThemeToggle />
-            {children}
-          </>
+          <Header />
+          <div className="mt-8"> {children}</div>
         </ThemeProvider>
       </body>
     </html>
