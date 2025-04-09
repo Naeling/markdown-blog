@@ -6,7 +6,7 @@ export default async function Posts() {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.id}>
+        <li className="mb-8" key={post.id}>
           <PostCard {...post} />
         </li>
       ))}
