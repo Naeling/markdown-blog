@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint-fix": "next lint --fix",
     "prettier-check": "prettier --check .",
     "prettier-fix": "prettier --write .",
     "type-check": "tsc --noEmit"
@@ -42,6 +43,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "tailwindcss": "^4.0.17",
