@@ -15,24 +15,43 @@ import {
 import { Input } from "@/components/ui";
 import { Button } from "@/components/ui";
 import { createPostAction } from "@/app/posts/new/createPostAction";
+import { createPostSchema } from "@/modules/posts";
 
-const createPostSchema = z.object({
-  title: z.string().min(1),
-  content: z.string().min(1),
-});
+import { startTransition, useActionState } from "react";
+import { useRef } from "react";
 
 export function PostForm() {
+  const [state, formAction] = useActionState(createPostAction, {
+    message: "",
+    fields: {},
+    issues: [],
+  });
+
   const form = useForm<z.infer<typeof createPostSchema>>({
     resolver: zodResolver(createPostSchema),
     defaultValues: {
       title: "",
       content: "",
+      ...state.fields,
     },
   });
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <Form {...form}>
-      <form action={createPostAction}>
+      <form
+        ref={formRef}
+        action={formAction}
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          form.handleSubmit(() => {
+            startTransition(() => {
+              formAction(new FormData(formRef.current!));
+            });
+          })(evt);
+        }}
+      >
         <FormField
           control={form.control}
           name="title"
