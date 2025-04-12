@@ -3,5 +3,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section className="max-w-prose mx-auto w-full">{children}</section>;
+  return (
+    <section className="max-w-prose w-full mx-auto px-8">{children}</section>
+  );
 }
