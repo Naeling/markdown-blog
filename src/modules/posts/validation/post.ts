@@ -2,12 +2,14 @@ import { z } from "zod";
 
 export const postSchema = z.object({
   id: z.string(),
-  title: z.string().min(1),
-  content: z.string().min(1),
+  title: z.string().trim().min(1),
+  content: z.string().trim().min(1),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });
 
+// TODO this schema organization is not very optimal
+// Using omit to derive the schema is debatable
 export const createPostSchema = postSchema.omit({
   id: true,
   createdAt: true,
