@@ -1,10 +1,11 @@
 "use server";
 
+import mapValues from "lodash/mapValues";
+import { redirect } from "next/navigation";
+
 import { createPostSchema } from "@/modules/posts";
 import { createPost } from "@/modules/posts";
 import { formDataToObject } from "@/utils";
-import mapValues from "lodash/mapValues";
-import { redirect } from "next/navigation";
 
 export type FormState = {
   message: string;

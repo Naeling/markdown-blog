@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -6,7 +8,6 @@ import {
   navigationMenuTriggerStyle,
   ThemeToggle,
 } from "@/components";
-import Link from "next/link";
 
 export function Header() {
   return (

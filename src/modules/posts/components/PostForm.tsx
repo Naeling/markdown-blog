@@ -1,8 +1,12 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { startTransition, useActionState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { createPostAction } from "@/app/posts/new/createPostAction";
 import {
   Form,
   FormControl,
@@ -14,11 +18,7 @@ import {
 } from "@/components/ui";
 import { Input } from "@/components/ui";
 import { Button } from "@/components/ui";
-import { createPostAction } from "@/app/posts/new/createPostAction";
 import { createPostSchema } from "@/modules/posts";
-
-import { startTransition, useActionState } from "react";
-import { useRef } from "react";
 
 export function PostForm() {
   const [state, formAction] = useActionState(createPostAction, {
