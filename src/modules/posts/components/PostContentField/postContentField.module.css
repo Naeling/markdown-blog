@@ -1,0 +1,3 @@
+.disable-all-children-outline * {
+  outline: none;
+}
