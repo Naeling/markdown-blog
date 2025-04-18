@@ -9,9 +9,14 @@ import {
 } from "@mdxeditor/editor";
 import { useEffect, useState } from "react";
 
-import styles from "./postContentField.module.css";
+import styles from "./postMarkdownEditor.module.css";
 
-export function PostContentField() {
+export type PostMarkdownEditorProps = {
+  markdown: string;
+  onChange: (markdown: string) => void;
+};
+
+export function PostMarkdownEditor(props: PostMarkdownEditorProps) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -27,14 +32,14 @@ export function PostContentField() {
       className={`${styles["editable-markdown-fixed-height"]} ${styles["mxeditor-container"]}`}
     >
       <MDXEditor
-        markdown="Hello World"
+        markdown={props.markdown}
         plugins={[
           headingsPlugin(),
           listsPlugin(),
           quotePlugin(),
           thematicBreakPlugin(),
         ]}
-        onChange={(markdown) => console.log(markdown)}
+        onChange={props.onChange}
       />
     </div>
   );
