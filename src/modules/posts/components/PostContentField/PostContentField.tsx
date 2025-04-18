@@ -24,7 +24,7 @@ export function PostContentField() {
 
   return (
     <div
-      className={`${styles["disable-all-children-outline"]} p-4 h-120 overflow-auto ring-2 ring-[var(--ring)] rounded-sm`}
+      className={`${styles["editable-markdown-fixed-height"]} ${styles["mxeditor-container"]}`}
     >
       <MDXEditor
         markdown="Hello World"
