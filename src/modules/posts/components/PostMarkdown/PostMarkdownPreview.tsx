@@ -6,7 +6,7 @@ export type PostMarkdownPreviewProps = {
 
 export function PostMarkdownPreview({ markdown }: PostMarkdownPreviewProps) {
   return (
-    <div className="h-[100px]">
+    <div className="h-[100px] p-[10px]">
       <Markdown>{markdown}</Markdown>
     </div>
   );
