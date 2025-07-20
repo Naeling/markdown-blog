@@ -1,15 +1,14 @@
-"use client";
-
-import { useState } from "react";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { PostMarkdownEditor } from "./PostMarkdownEditor";
 import { PostMarkdownPreview } from "./PostMarkdownPreview";
 
-export function PostMarkdownTabs() {
-  const [markdown, setMarkdown] = useState("# Hi, *Pluto*!");
+export type PostMarkdownTabsProps = {
+  markdown: string;
+  onChange: (markdown: string) => void;
+};
 
+export function PostMarkdownTabs(props: PostMarkdownTabsProps) {
   return (
     <Tabs defaultValue="edit" className="p-4 border-2 rounded-lg">
       <TabsList>
@@ -17,10 +16,13 @@ export function PostMarkdownTabs() {
         <TabsTrigger value="preview">Preview</TabsTrigger>
       </TabsList>
       <TabsContent value="edit">
-        <PostMarkdownEditor markdown={markdown} onChange={setMarkdown} />
+        <PostMarkdownEditor
+          markdown={props.markdown}
+          onChange={props.onChange}
+        />
       </TabsContent>
       <TabsContent value="preview">
-        <PostMarkdownPreview markdown={markdown} />
+        <PostMarkdownPreview markdown={props.markdown} />
       </TabsContent>
     </Tabs>
   );
