@@ -10,7 +10,7 @@ export type PostMarkdownTabsProps = {
 
 export function PostMarkdownTabs(props: PostMarkdownTabsProps) {
   return (
-    <Tabs defaultValue="edit" className="p-4 border-2 rounded-lg">
+    <Tabs defaultValue="edit" className="p-2 border-2 rounded-lg">
       <TabsList>
         <TabsTrigger value="edit">Edit</TabsTrigger>
         <TabsTrigger value="preview">Preview</TabsTrigger>
