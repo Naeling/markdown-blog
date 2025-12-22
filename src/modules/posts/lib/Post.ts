@@ -6,7 +6,7 @@ import { Post } from "@/models";
 import { PostDTO, postSchema } from "@/modules/posts";
 
 export async function getAllPosts() {
-  const rawPosts = await Post.find().sort({ createdAt: -1 });
+  const rawPosts = await Post.find().sort({ createdAt: 1 });
   const posts: (PostDTO | null)[] = rawPosts.map((post) => {
     const parsedPost = postSchema.safeParse({
       id: post._id.toString(),
