@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  headingsPlugin,
-  listsPlugin,
-  MDXEditor,
-  quotePlugin,
-  thematicBreakPlugin,
-} from "@mdxeditor/editor";
 import { useEffect, useState } from "react";
+
+import { Textarea } from "@/components";
 
 import styles from "./postMarkdownEditor.module.css";
 
@@ -31,15 +26,10 @@ export function PostMarkdownEditor(props: PostMarkdownEditorProps) {
     <div
       className={`${styles["editable-markdown-fixed-height"]} ${styles["mxeditor-container"]}`}
     >
-      <MDXEditor
-        markdown={props.markdown}
-        plugins={[
-          headingsPlugin(),
-          listsPlugin(),
-          quotePlugin(),
-          thematicBreakPlugin(),
-        ]}
-        onChange={props.onChange}
+      <Textarea
+        placeholder="Type your message here."
+        value={props.markdown}
+        onChange={(e) => props.onChange(e.target.value)}
       />
     </div>
   );
