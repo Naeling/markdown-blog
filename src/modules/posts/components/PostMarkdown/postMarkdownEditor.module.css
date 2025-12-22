@@ -1,0 +1,14 @@
+.disable-all-children-outline * {
+  outline: none;
+}
+
+.editable-markdown-fixed-height [aria-label="editable markdown"] {
+  height: 200px;
+  outline-offset: 8px;
+}
+
+.mxeditor-container :global(.mdxeditor) {
+  padding: 8px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}

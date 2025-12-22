@@ -29,7 +29,7 @@ jobs:
         run: pnpm install
 
       - name: 🧹 Run Prettier check
-        run: pnpm run prettier:check
+        run: pnpm run prettier
 
       - name: 🔧 Run Linter & Build project
         run: pnpm run lint & pnpm run build

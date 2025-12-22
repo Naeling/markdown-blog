@@ -18,7 +18,7 @@ import {
 } from "@/components/ui";
 import { Input } from "@/components/ui";
 import { Button } from "@/components/ui";
-import { createPostSchema } from "@/modules/posts";
+import { createPostSchema, PostMarkdownTabs } from "@/modules/posts";
 
 export function PostForm() {
   const [state, formAction] = useActionState(createPostAction, {
@@ -73,7 +73,10 @@ export function PostForm() {
             <FormItem className="mb-6">
               <FormLabel> Content </FormLabel>
               <FormControl>
-                <Input placeholder="content" {...field} />
+                <PostMarkdownTabs
+                  markdown={field.value}
+                  onChange={field.onChange}
+                />
               </FormControl>
               <FormDescription> This is your post content </FormDescription>
               <FormMessage />
