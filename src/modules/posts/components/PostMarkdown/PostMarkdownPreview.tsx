@@ -5,9 +5,11 @@ export type PostMarkdownPreviewProps = {
 };
 
 export function PostMarkdownPreview({ markdown }: PostMarkdownPreviewProps) {
+  const DEFAULT_TEXT = "Nothing to preview";
+
   return (
     <div className="h-[100px] p-[10px]">
-      <Markdown>{markdown}</Markdown>
+      <Markdown>{markdown || DEFAULT_TEXT}</Markdown>
     </div>
   );
 }
