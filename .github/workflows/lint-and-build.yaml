@@ -31,10 +31,7 @@ jobs:
       - name: 🧹 Run Prettier check
         run: pnpm run prettier:check
 
-      - name: 🧪 Run Linter
-        run: pnpm run lint
-
-      - name: 🔧 Build project
-        run: pnpm run build
+      - name: 🔧 Run Linter & Build project
+        run: pnpm run lint & pnpm run build
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
