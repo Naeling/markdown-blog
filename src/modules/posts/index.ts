@@ -1,3 +1,7 @@
+export * from "./actions/createPostAction";
+export * from "./actions/deletePostAction";
+export * from "./components/ConfirmDeleteAlertDialog";
+export * from "./components/DeleteButtonIcon";
 export * from "./components/PostCard";
 export * from "./components/PostForm";
 export * from "./components/PostMarkdown/PostMarkdownEditor";
