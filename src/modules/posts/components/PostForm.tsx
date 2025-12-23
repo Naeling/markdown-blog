@@ -75,6 +75,7 @@ export function PostForm() {
               <FormControl>
                 <PostMarkdownTabs
                   markdown={field.value}
+                  formFieldName={field.name}
                   onChange={field.onChange}
                 />
               </FormControl>

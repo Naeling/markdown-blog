@@ -8,6 +8,7 @@ import styles from "./postMarkdownEditor.module.css";
 
 export type PostMarkdownEditorProps = {
   markdown: string;
+  formFieldName: string;
   onChange: (markdown: string) => void;
 };
 
@@ -29,6 +30,7 @@ export function PostMarkdownEditor(props: PostMarkdownEditorProps) {
       <Textarea
         placeholder="Type your message here."
         value={props.markdown}
+        name={props.formFieldName}
         onChange={(e) => props.onChange(e.target.value)}
       />
     </div>
