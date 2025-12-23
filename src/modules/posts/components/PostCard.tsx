@@ -1,6 +1,7 @@
 "use client";
 
 import { startTransition, useState } from "react";
+import Markdown from "react-markdown";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { deletePostAction } from "@/modules/posts/actions/deletePostAction";
@@ -29,7 +30,7 @@ export function PostCard(post: PostCardProps) {
         <CardHeader>
           <CardTitle>{post.title}</CardTitle>
           <CardContent>
-            <p> {post.content} </p>
+            <Markdown>{post.content}</Markdown>
           </CardContent>
         </CardHeader>
       </Card>
