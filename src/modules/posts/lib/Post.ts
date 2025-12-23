@@ -35,3 +35,7 @@ export async function createPost({
   const post = new Post({ title, content });
   return post.save();
 }
+
+export async function deletePost({ id }: { id: string }) {
+  await Post.deleteOne({ _id: id });
+}
