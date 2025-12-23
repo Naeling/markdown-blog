@@ -5,6 +5,7 @@ import { PostMarkdownPreview } from "./PostMarkdownPreview";
 
 export type PostMarkdownTabsProps = {
   markdown: string;
+  formFieldName: string;
   onChange: (markdown: string) => void;
 };
 
@@ -18,6 +19,7 @@ export function PostMarkdownTabs(props: PostMarkdownTabsProps) {
       <TabsContent value="edit">
         <PostMarkdownEditor
           markdown={props.markdown}
+          formFieldName={props.formFieldName}
           onChange={props.onChange}
         />
       </TabsContent>
