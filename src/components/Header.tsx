@@ -11,7 +11,7 @@ import {
 
 export function Header() {
   return (
-    <header className="sticky top-0 flex justify-between px-4 py-3 border-b bg-background">
+    <header className="sticky top-0 flex justify-between px-4 py-3 border-b bg-background z-1">
       <div className="flex items-center">
         <Link href="/" className="font-semibold text-lg mr-4">
           Markdown Blog
