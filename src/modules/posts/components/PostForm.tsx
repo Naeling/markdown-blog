@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { createPostAction } from "@/app/posts/new/createPostAction";
 import {
   Form,
   FormControl,
@@ -19,6 +18,7 @@ import {
 import { Input } from "@/components/ui";
 import { Button } from "@/components/ui";
 import { createPostSchema, PostMarkdownTabs } from "@/modules/posts";
+import { createPostAction } from "@/modules/posts";
 
 export function PostForm() {
   const [state, formAction] = useActionState(createPostAction, {
