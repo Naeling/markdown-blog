@@ -1,8 +1,11 @@
 "use client";
 
+import { startTransition, useState } from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { deletePostAction } from "@/modules/posts/actions/deletePostAction";
 
+import { ConfirmDeleteAlertDialogButtonTrigger } from "./ConfirmDeleteAlertDialog";
 import { DeleteButtonIcon } from "./DeleteButtonIcon";
 
 interface PostCardProps {
@@ -12,21 +15,34 @@ interface PostCardProps {
 }
 
 export function PostCard(post: PostCardProps) {
+  const [isConfirmDeleteDialogOpen, setIsConfirmDeleteDialogOpen] =
+    useState(false);
+
   return (
-    <Card className="relative">
-      <div className="absolute top-2 right-2">
-        <DeleteButtonIcon
-          onClick={() => {
+    <>
+      <Card className="relative">
+        <div className="absolute top-2 right-2">
+          <DeleteButtonIcon
+            onClick={() => setIsConfirmDeleteDialogOpen(true)}
+          />
+        </div>
+        <CardHeader>
+          <CardTitle>{post.title}</CardTitle>
+          <CardContent>
+            <p> {post.content} </p>
+          </CardContent>
+        </CardHeader>
+      </Card>
+      <ConfirmDeleteAlertDialogButtonTrigger
+        isOpen={isConfirmDeleteDialogOpen}
+        onConfirm={() => {
+          startTransition(() => {
             deletePostAction({ id: post.id });
-          }}
-        />
-      </div>
-      <CardHeader>
-        <CardTitle>{post.title}</CardTitle>
-        <CardContent>
-          <p> {post.content} </p>
-        </CardContent>
-      </CardHeader>
-    </Card>
+            setIsConfirmDeleteDialogOpen(false);
+          });
+        }}
+        onClose={() => setIsConfirmDeleteDialogOpen(false)}
+      />
+    </>
   );
 }
