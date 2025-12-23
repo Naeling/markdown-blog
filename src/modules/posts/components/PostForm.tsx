@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { ButtonLoading } from "@/components/ButtonLoading";
 import {
   Form,
   FormControl,
@@ -21,7 +22,7 @@ import { createPostSchema, PostMarkdownTabs } from "@/modules/posts";
 import { createPostAction } from "@/modules/posts";
 
 export function PostForm() {
-  const [state, formAction] = useActionState(createPostAction, {
+  const [state, formAction, isPending] = useActionState(createPostAction, {
     message: "",
     fields: {},
     issues: [],
@@ -84,7 +85,11 @@ export function PostForm() {
             </FormItem>
           )}
         />
-        <Button type="submit"> Submit </Button>
+        {isPending ? (
+          <ButtonLoading text="Submitting..." />
+        ) : (
+          <Button type="submit"> Submit </Button>
+        )}
       </form>
     </Form>
   );
