@@ -18,6 +18,7 @@ interface PostCardProps {
 export function PostCard(post: PostCardProps) {
   const [isConfirmDeleteDialogOpen, setIsConfirmDeleteDialogOpen] =
     useState(false);
+  const [isSubmittingDelete, setIsSubmittingDelete] = useState(false);
 
   return (
     <>
@@ -36,9 +37,12 @@ export function PostCard(post: PostCardProps) {
       </Card>
       <ConfirmDeleteAlertDialogButtonTrigger
         isOpen={isConfirmDeleteDialogOpen}
+        isSubmitting={isSubmittingDelete}
         onConfirm={() => {
-          startTransition(() => {
-            deletePostAction({ id: post.id });
+          setIsSubmittingDelete(true);
+          startTransition(async () => {
+            await deletePostAction({ id: post.id });
+            setIsSubmittingDelete(false);
             setIsConfirmDeleteDialogOpen(false);
           });
         }}

@@ -1,5 +1,6 @@
 "use client";
 
+import { ButtonLoading } from "@/components/ButtonLoading";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,12 +14,14 @@ import {
 
 export interface ConfirmDeleteAlertDialogProps {
   isOpen: boolean;
+  isSubmitting: boolean;
   onConfirm: () => void;
   onClose: () => void;
 }
 
 export function ConfirmDeleteAlertDialogButtonTrigger({
   isOpen,
+  isSubmitting,
   onConfirm,
   onClose,
 }: ConfirmDeleteAlertDialogProps) {
@@ -33,7 +36,11 @@ export function ConfirmDeleteAlertDialogButtonTrigger({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={onClose}>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>Continue</AlertDialogAction>
+          {isSubmitting ? (
+            <ButtonLoading text="Deleting..." />
+          ) : (
+            <AlertDialogAction onClick={onConfirm}>Continue</AlertDialogAction>
+          )}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
