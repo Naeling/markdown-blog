@@ -1,0 +1,29 @@
+name: Playwright Tests Docker
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  playwright:
+    name: "Playwright Tests"
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.57.0-noble
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v4
+      - name: 💾 Install pnpm
+        run: npm install -g pnpm
+      - name: 🔢 Read Node.js version from .nvmrc
+        id: node
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.node.outputs.version }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
